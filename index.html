@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MK Clean | Services de Nettoyage Professionnels</title>
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "primary":                   "#006972",
+            "on-primary":                "#ffffff",
+            "primary-container":         "#42b0bc",
+            "on-primary-container":      "#003f45",
+            "primary-fixed":             "#8bf2ff",
+            "on-primary-fixed":          "#001f23",
+            "primary-fixed-dim":         "#6dd6e2",
+            "secondary":                 "#944a00",
+            "secondary-container":       "#fe9b4e",
+            "on-secondary-container":    "#6f3600",
+            "secondary-fixed-dim":       "#ffb784",
+            "tertiary":                  "#51606b",
+            "tertiary-fixed":            "#d5e5f1",
+            "tertiary-fixed-dim":        "#b9c9d5",
+            "on-tertiary":               "#ffffff",
+            "on-tertiary-fixed":         "#0e1d26",
+            "surface":                   "#f5faff",
+            "surface-bright":            "#f5faff",
+            "surface-container-lowest":  "#ffffff",
+            "surface-container-low":     "#e9f5ff",
+            "surface-container":         "#e0f0fd",
+            "surface-container-high":    "#daeaf7",
+            "surface-container-highest": "#d5e5f1",
+            "on-surface":                "#0e1d26",
+            "on-surface-variant":        "#3d494a",
+            "outline":                   "#6d797b",
+            "outline-variant":           "#bdc9ca",
+            "inverse-surface":           "#23323c",
+            "inverse-on-surface":        "#e4f3ff",
+            "background":                "#f5faff",
+            "on-background":             "#0e1d26",
+          },
+          fontFamily: {
+            "headline": ["Fraunces", "serif"],
+            "body":     ["Figtree", "sans-serif"],
+            "label":    ["Figtree", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "0.25rem",
+            lg:   "0.5rem",
+            xl:   "0.75rem",
+            "2xl":"1.5rem",
+            full: "9999px",
+          },
+        },
+      },
+    }
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Figtree:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-surface text-on-surface font-body antialiased">
+
+  <!-- ══════════════════════════════════════════
+       NAV — DESKTOP
+  ══════════════════════════════════════════ -->
+  <header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl">
+    <div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+
+      <!-- Logo -->
+      <a href="#accueil" class="font-headline text-2xl font-bold text-teal-700">
+        MK Clean
+      </a>
+
+      <!-- Desktop links -->
+      <div id="desktop-nav" class="hidden md:flex items-center space-x-10">
+        <a href="#accueil"     class="nav-item font-body tracking-tight text-sm">Accueil</a>
+        <a href="#realisation" class="nav-item font-body tracking-tight text-sm">Réalisations</a>
+        <a href="#services"    class="nav-item font-body tracking-tight text-sm">Services</a>
+        <a href="#apropos"     class="nav-item font-body tracking-tight text-sm">À Propos</a>
+        <a href="#contact"     class="nav-item font-body tracking-tight text-sm">Contact</a>
+      </div>
+
+      <!-- Desktop CTA -->
+      <div class="flex items-center gap-4">
+        <a href="#contact" class="hidden md:inline-block bg-teal-600 text-white px-6 py-2.5 rounded-xl font-semibold text-sm scale-95 active:opacity-80 transition-all hover:bg-teal-700">
+          Demander un devis
+        </a>
+        <!-- Burger (mobile only) -->
+        <button id="menu-open-btn" class="md:hidden p-2 text-teal-700" aria-label="Ouvrir le menu">
+          <span class="material-symbols-outlined text-2xl">menu</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════
+       MENU MOBILE — PLEIN ÉCRAN
+  ══════════════════════════════════════════ -->
+  <div id="mobile-menu" class="fixed inset-0 z-[60] translate-x-full transition-transform duration-300 ease-in-out bg-surface flex flex-col pt-24 px-8 space-y-8">
+
+    <!-- Brand -->
+    <div class="mb-4">
+      <h1 class="font-headline text-3xl text-teal-700 font-bold italic">MK Clean</h1>
+      <div class="w-12 h-1 bg-secondary-container mt-2 rounded-full"></div>
+    </div>
+
+    <!-- Links -->
+    <div class="flex flex-col space-y-4">
+      <a href="#accueil"     class="mobile-link group flex items-center space-x-6 text-teal-700 font-extrabold border-l-4 border-secondary-container pl-4 transition-all">
+        <span class="material-symbols-outlined text-2xl">home</span>
+        <span class="font-label uppercase tracking-[0.05em] text-lg">Accueil</span>
+      </a>
+      <a href="#realisation" class="mobile-link group flex items-center space-x-6 text-on-surface opacity-70 pl-4 hover:text-teal-700 hover:opacity-100 transition-all">
+        <span class="material-symbols-outlined text-2xl">photo_library</span>
+        <span class="font-label uppercase tracking-[0.05em] text-lg">Réalisations</span>
+      </a>
+      <a href="#services"    class="mobile-link group flex items-center space-x-6 text-on-surface opacity-70 pl-4 hover:text-teal-700 hover:opacity-100 transition-all">
+        <span class="material-symbols-outlined text-2xl">business_center</span>
+        <span class="font-label uppercase tracking-[0.05em] text-lg">Services</span>
+      </a>
+      <a href="#apropos"     class="mobile-link group flex items-center space-x-6 text-on-surface opacity-70 pl-4 hover:text-teal-700 hover:opacity-100 transition-all">
+        <span class="material-symbols-outlined text-2xl">info</span>
+        <span class="font-label uppercase tracking-[0.05em] text-lg">À Propos</span>
+      </a>
+      <a href="#contact"     class="mobile-link group flex items-center space-x-6 text-on-surface opacity-70 pl-4 hover:text-teal-700 hover:opacity-100 transition-all">
+        <span class="material-symbols-outlined text-2xl">mail</span>
+        <span class="font-label uppercase tracking-[0.05em] text-lg">Contact</span>
+      </a>
+    </div>
+
+    <!-- Engagement card -->
+    <div class="mt-auto pb-12">
+      <div class="bg-surface-container-low rounded-2xl p-6 shadow-sm">
+        <p class="text-xs font-label uppercase tracking-widest text-primary mb-3">Notre Engagement</p>
+        <p class="font-headline text-lg italic text-on-surface mb-5">"Une propreté impeccable, une sérénité totale."</p>
+        <a href="#contact" class="mobile-link block w-full py-4 bg-teal-700 text-white rounded-2xl font-bold tracking-wide shadow-lg text-center hover:bg-teal-800 transition-colors">
+          Réserver un service
+        </a>
+      </div>
+      <div class="flex justify-between items-center mt-6 px-1">
+        <p class="text-[10px] font-label text-outline uppercase tracking-tighter">© 2025 MK Clean Pristine Service</p>
+      </div>
+    </div>
+
+    <!-- Close button -->
+    <button id="menu-close-btn" class="absolute top-6 right-6 w-12 h-12 flex items-center justify-center rounded-full bg-surface-container-highest text-on-surface hover:bg-secondary-container transition-colors" aria-label="Fermer le menu">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+  </div>
+
+  <main>
+
+    <!-- ══════════════════════════════════════════
+         HERO
+    ══════════════════════════════════════════ -->
+    <section id="accueil" class="relative min-h-screen flex items-center overflow-hidden bg-white">
+
+      <!-- Image en fond sur mobile uniquement -->
+      <div class="absolute inset-0 lg:hidden">
+        <img src="images/hero-background.png" alt="" class="w-full h-full object-cover" aria-hidden="true">
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-900/65 via-slate-900/50 to-slate-900/75"></div>
+      </div>
+
+      <div class="relative max-w-7xl mx-auto w-full lg:grid lg:grid-cols-12 px-6 lg:px-8 pt-20">
+
+        <!-- Text -->
+        <div class="lg:col-span-6 flex flex-col justify-center z-10 py-28 lg:py-20">
+          <span class="font-label uppercase tracking-[0.3em] text-teal-300 lg:text-teal-600 font-bold mb-5 text-xs">Marne &amp; Champagne-Ardenne</span>
+          <h1 class="font-headline text-4xl sm:text-5xl lg:text-8xl font-black leading-[1.1] mb-6 text-white lg:text-on-surface">
+            La propreté <span class="text-teal-400 lg:text-teal-600 italic">professionnelle,</span> à votre service.
+          </h1>
+          <p class="text-base lg:text-xl text-white/75 lg:text-on-surface-variant max-w-lg mb-10 leading-relaxed font-light">
+            MK Clean prend soin de vos espaces avec rigueur et discrétion. Des services professionnels rapides, efficaces et respectueux de l'environnement.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#contact" class="bg-teal-600 lg:bg-teal-700 text-white px-8 py-4 rounded-full font-bold text-base hover:bg-teal-800 transition-all shadow-lg">
+              Demander un devis
+            </a>
+            <a href="#services" class="px-8 py-4 rounded-full font-bold text-base border-2 border-white/40 text-white lg:border-slate-200 lg:text-on-surface hover:border-teal-300 transition-all">
+              Nos services
+            </a>
+          </div>
+        </div>
+
+        <!-- Image desktop uniquement -->
+        <div class="hidden lg:flex lg:col-span-6 relative items-center justify-end py-20">
+          <div class="w-full h-[70vh] rounded-3xl overflow-hidden shadow-2xl">
+            <img src="images/hero-background.png" alt="Nettoyage professionnel MK Clean" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         TRUST BAR
+    ══════════════════════════════════════════ -->
+    <section class="bg-inverse-surface py-12 px-8">
+      <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-10 text-white/50">
+        <div class="flex items-center gap-4">
+          <span class="material-symbols-outlined text-teal-400">verified_user</span>
+          <span class="font-label uppercase tracking-widest text-xs">Normes Sanitaires Pro</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <span class="material-symbols-outlined text-teal-400">eco</span>
+          <span class="font-label uppercase tracking-widest text-xs">Produits Écologiques</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <span class="material-symbols-outlined text-teal-400">schedule</span>
+          <span class="font-label uppercase tracking-widest text-xs">Réactivité 24h</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <span class="material-symbols-outlined text-teal-400">security</span>
+          <span class="font-label uppercase tracking-widest text-xs">Entreprise Assurée</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         RÉALISATIONS
+    ══════════════════════════════════════════ -->
+    <section id="realisation" class="py-24 px-8 bg-white">
+      <div class="max-w-7xl mx-auto">
+
+        <div class="mb-14">
+          <span class="font-label uppercase tracking-widest text-teal-600 font-bold mb-4 block text-sm">Portfolio</span>
+          <h2 class="font-headline text-5xl font-bold text-on-surface">Nos Réalisations</h2>
+        </div>
+
+        <!-- Carousel -->
+        <div class="carousel mb-16">
+          <div class="carousel-inner">
+            <div class="carousel-item">
+              <img src="images/image1.jpg" alt="Nettoyage de gymnase">
+              <div class="carousel-caption">
+                <h3 class="font-headline text-xl font-bold text-white mb-1">Entretien d'installations sportives</h3>
+                <p class="text-sm text-white/65">Nettoyage spécialisé pour gymnases et terrains multisports</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="images/image3.jpg" alt="Entretien d'appartement">
+              <div class="carousel-caption">
+                <h3 class="font-headline text-xl font-bold text-white mb-1">Nettoyage résidentiel</h3>
+                <p class="text-sm text-white/65">Services adaptés aux appartements et maisons particulières</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="images/image4.jpg" alt="Nettoyage après travaux">
+              <div class="carousel-caption">
+                <h3 class="font-headline text-xl font-bold text-white mb-1">Remise en état après travaux</h3>
+                <p class="text-sm text-white/65">Nettoyage complet pour rendre vos locaux impeccables</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="images/image5.jpg" alt="Nettoyage de bureaux">
+              <div class="carousel-caption">
+                <h3 class="font-headline text-xl font-bold text-white mb-1">Nettoyage de locaux professionnels</h3>
+                <p class="text-sm text-white/65">Entretien régulier de bureaux et espaces commerciaux</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="images/image6.jpg" alt="Nettoyage de sols">
+              <div class="carousel-caption">
+                <h3 class="font-headline text-xl font-bold text-white mb-1">Traitement et nettoyage de sols</h3>
+                <p class="text-sm text-white/65">Remise à neuf des surfaces avec des produits professionnels</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-indicators">
+            <span class="carousel-indicator active" data-index="0"></span>
+            <span class="carousel-indicator" data-index="1"></span>
+            <span class="carousel-indicator" data-index="2"></span>
+            <span class="carousel-indicator" data-index="3"></span>
+            <span class="carousel-indicator" data-index="4"></span>
+          </div>
+          <div class="carousel-controls">
+            <button class="carousel-control carousel-prev" aria-label="Précédent">
+              <span class="material-symbols-outlined">chevron_left</span>
+            </button>
+            <button class="carousel-control carousel-next" aria-label="Suivant">
+              <span class="material-symbols-outlined">chevron_right</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Avant / Après -->
+        <div class="mb-10">
+          <span class="font-label uppercase tracking-widest text-teal-600 font-bold mb-3 block text-sm">Transformations</span>
+          <h3 class="font-headline text-3xl font-bold text-on-surface">Avant / Après</h3>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+          <div class="rounded-3xl overflow-hidden shadow-sm">
+            <div class="bg-teal-700 px-6 py-3">
+              <span class="font-label text-xs font-bold uppercase tracking-widest text-white">Nettoyage après travaux</span>
+            </div>
+            <div class="flex">
+              <div class="flex-1 relative">
+                <img src="images/travaux-avant.jpg" alt="Avant" class="w-full h-52 object-cover">
+                <span class="absolute top-3 left-3 bg-inverse-surface/80 text-white text-xs font-bold uppercase tracking-wider px-2 py-1 rounded">Avant</span>
+              </div>
+              <div class="flex-1 relative border-l-2 border-white">
+                <img src="images/travaux-apres.jpg" alt="Après" class="w-full h-52 object-cover">
+                <span class="absolute top-3 left-3 bg-teal-700/90 text-white text-xs font-bold uppercase tracking-wider px-2 py-1 rounded">Après</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-3xl overflow-hidden shadow-sm">
+            <div class="bg-teal-700 px-6 py-3">
+              <span class="font-label text-xs font-bold uppercase tracking-widest text-white">Nettoyage de bureaux</span>
+            </div>
+            <div class="flex">
+              <div class="flex-1 relative">
+                <img src="images/bureau-avant.jpg" alt="Avant" class="w-full h-52 object-cover">
+                <span class="absolute top-3 left-3 bg-inverse-surface/80 text-white text-xs font-bold uppercase tracking-wider px-2 py-1 rounded">Avant</span>
+              </div>
+              <div class="flex-1 relative border-l-2 border-white">
+                <img src="images/bureau-apres.jpg" alt="Après" class="w-full h-52 object-cover">
+                <span class="absolute top-3 left-3 bg-teal-700/90 text-white text-xs font-bold uppercase tracking-wider px-2 py-1 rounded">Après</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Portfolio photos -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+          <div class="rounded-3xl overflow-hidden aspect-video">
+            <img src="images/image5.jpg" alt="Nettoyage professionnel" class="w-full h-full object-cover">
+          </div>
+          <div class="rounded-3xl overflow-hidden aspect-video">
+            <img src="images/image6.jpg" alt="Entretien de locaux" class="w-full h-full object-cover">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SERVICES
+    ══════════════════════════════════════════ -->
+    <section id="services" class="py-32 px-8 bg-surface-container-low">
+      <div class="max-w-7xl mx-auto">
+
+        <div class="text-center mb-24 max-w-3xl mx-auto">
+          <span class="font-label uppercase tracking-widest text-teal-600 font-bold mb-4 block text-sm">Nos Prestations</span>
+          <h2 class="font-headline text-5xl font-bold text-on-surface mb-6">Des solutions adaptées à chaque espace.</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+          <!-- Card 1 — Nettoyage Commercial -->
+          <div class="group bg-surface-container-lowest p-8 rounded-3xl flex flex-col border border-outline-variant/10 shadow-sm transition-all hover:shadow-xl hover:border-teal-100 duration-500">
+            <div class="mb-8 w-12 h-12 bg-primary-fixed flex items-center justify-center rounded-2xl text-on-primary-fixed group-hover:bg-teal-700 group-hover:text-white transition-colors">
+              <span class="material-symbols-outlined text-2xl">corporate_fare</span>
+            </div>
+            <h3 class="font-headline text-2xl font-bold mb-4">Nettoyage Commercial</h3>
+            <p class="text-on-surface-variant leading-relaxed mb-6 font-light flex-1">
+              Entretien régulier de vos bureaux, commerces et locaux professionnels pour un environnement sain et productif.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-8">
+              <span class="bg-surface-container-highest px-3 py-1 rounded-full text-xs font-label uppercase tracking-wider">Bureaux</span>
+              <span class="bg-surface-container-highest px-3 py-1 rounded-full text-xs font-label uppercase tracking-wider">Commerces</span>
+            </div>
+            <a href="#contact" class="inline-flex items-center text-teal-700 font-bold gap-2 group-hover:gap-4 transition-all mt-auto">
+              Demander un devis <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+          </div>
+
+          <!-- Card 2 — Nettoyage Résidentiel -->
+          <div class="group bg-surface-container-lowest p-8 rounded-3xl flex flex-col border border-outline-variant/10 shadow-sm transition-all hover:shadow-xl hover:border-teal-100 duration-500">
+            <div class="mb-8 w-12 h-12 bg-primary-fixed flex items-center justify-center rounded-2xl text-on-primary-fixed group-hover:bg-teal-700 group-hover:text-white transition-colors">
+              <span class="material-symbols-outlined text-2xl">home</span>
+            </div>
+            <h3 class="font-headline text-2xl font-bold mb-4">Nettoyage Résidentiel</h3>
+            <p class="text-on-surface-variant leading-relaxed mb-6 font-light flex-1">
+              Services de ménage adaptés aux maisons et appartements particuliers. Interventions régulières ou ponctuelles.
+            </p>
+            <div class="rounded-2xl overflow-hidden h-36 mb-6">
+              <img src="images/image3.jpg" alt="Nettoyage résidentiel" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            </div>
+            <a href="#contact" class="inline-flex items-center text-teal-700 font-bold gap-2 group-hover:gap-4 transition-all mt-auto">
+              Demander un devis <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+          </div>
+
+          <!-- Card 3 — Après Travaux (dark) -->
+          <div class="bg-inverse-surface p-8 rounded-3xl flex flex-col text-white transition-all hover:brightness-110 duration-300">
+            <div class="mb-8 w-12 h-12 bg-primary flex items-center justify-center rounded-2xl">
+              <span class="material-symbols-outlined text-2xl text-white">construction</span>
+            </div>
+            <h3 class="font-headline text-2xl font-bold mb-4">Après Travaux</h3>
+            <p class="text-slate-400 leading-relaxed mb-8 font-light flex-1">
+              Remise en état profonde après chantier ou rénovation. Nettoyage intensif des poussières et résidus de construction.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-8">
+              <span class="bg-teal-900/60 px-3 py-1 rounded-full text-xs font-label uppercase tracking-wider text-teal-300">Chantiers</span>
+              <span class="bg-teal-900/60 px-3 py-1 rounded-full text-xs font-label uppercase tracking-wider text-teal-300">Rénovations</span>
+            </div>
+            <a href="#contact" class="mt-auto block w-full py-3 bg-secondary-container text-on-secondary-container rounded-xl font-bold text-center hover:opacity-90 transition-opacity">
+              Devis Express
+            </a>
+          </div>
+
+        </div>
+
+        <!-- 4th service — Nettoyage de Vitres (full-width highlight) -->
+        <div class="mt-8 group bg-surface-container-lowest rounded-3xl border border-outline-variant/10 shadow-sm transition-all hover:shadow-xl hover:border-teal-100 duration-500 flex flex-col md:flex-row gap-0 overflow-hidden">
+          <div class="p-10 md:p-12 flex flex-col justify-center flex-1">
+            <div class="mb-8 w-12 h-12 bg-primary-fixed flex items-center justify-center rounded-2xl text-on-primary-fixed group-hover:bg-teal-700 group-hover:text-white transition-colors">
+              <span class="material-symbols-outlined text-2xl">window</span>
+            </div>
+            <h3 class="font-headline text-2xl font-bold mb-4">Nettoyage de Vitres</h3>
+            <p class="text-on-surface-variant leading-relaxed mb-8 font-light max-w-xl">
+              Service professionnel pour des vitres impeccables, aussi bien pour les commerces que pour les particuliers. Des résultats irréprochables et durables.
+            </p>
+            <a href="#contact" class="inline-flex items-center text-teal-700 font-bold gap-2 group-hover:gap-4 transition-all">
+              Planifier une intervention <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+          </div>
+          <div class="md:w-72 h-48 md:h-auto overflow-hidden">
+            <img src="images/image1.jpg" alt="Nettoyage de vitres" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         À PROPOS — HERO TEXT
+    ══════════════════════════════════════════ -->
+    <section id="apropos" class="relative px-8 py-20 lg:py-32 max-w-7xl mx-auto overflow-hidden">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="z-10">
+          <span class="inline-block px-4 py-1.5 rounded-full bg-primary-fixed text-on-primary-fixed text-xs font-bold tracking-[0.05em] uppercase mb-6 font-label">
+            À Propos de MK Clean
+          </span>
+          <h2 class="font-headline text-5xl lg:text-7xl text-on-surface leading-tight mb-8">
+            Redéfinir la <span class="text-teal-600 italic">propreté</span> au quotidien.
+          </h2>
+          <p class="text-lg text-on-surface-variant max-w-xl leading-relaxed">
+            Depuis notre création, MK Clean s'engage à transformer vos espaces de vie et de travail en environnements impeccables, grâce à une attention méticuleuse portée aux détails et à la satisfaction totale de nos clients.
+          </p>
+        </div>
+        <div class="relative">
+          <div class="aspect-video lg:aspect-[4/3] rounded-3xl overflow-hidden shadow-xl">
+            <img src="images/image4.jpg" alt="MK Clean en action" class="w-full h-full object-cover">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         À PROPOS — VALEURS
+    ══════════════════════════════════════════ -->
+    <section class="bg-surface-container-low py-24 px-8">
+      <div class="max-w-7xl mx-auto">
+
+        <div class="text-center mb-16">
+          <h2 class="font-headline text-4xl font-bold text-on-surface mb-4">Nos Valeurs Fondamentales</h2>
+          <div class="h-1 w-20 bg-primary mx-auto rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+          <div class="p-8 border-l-2 border-primary-fixed bg-surface-container-lowest rounded-r-2xl shadow-sm">
+            <h3 class="font-headline text-xl font-bold mb-4 flex items-center gap-3">
+              <span class="material-symbols-outlined text-teal-700 text-xl">check_circle</span>
+              Qualité
+            </h3>
+            <p class="text-on-surface-variant leading-relaxed">
+              Des standards élevés pour chaque intervention. Nous ne nous contentons pas de nettoyer — nous restituons l'éclat originel de vos espaces.
+            </p>
+          </div>
+
+          <div class="p-8 border-l-2 border-secondary-container bg-surface-container-lowest rounded-r-2xl shadow-sm">
+            <h3 class="font-headline text-xl font-bold mb-4 flex items-center gap-3">
+              <span class="material-symbols-outlined text-secondary text-xl">eco</span>
+              Écologie
+            </h3>
+            <p class="text-on-surface-variant leading-relaxed">
+              Utilisation exclusive de produits certifiés respectueux de l'environnement pour une fraîcheur saine et durable, sans compromis sur l'efficacité.
+            </p>
+          </div>
+
+          <div class="p-8 border-l-2 border-tertiary-fixed-dim bg-surface-container-lowest rounded-r-2xl shadow-sm">
+            <h3 class="font-headline text-xl font-bold mb-4 flex items-center gap-3">
+              <span class="material-symbols-outlined text-tertiary text-xl">schedule</span>
+              Ponctualité &amp; Sécurité
+            </h3>
+            <p class="text-on-surface-variant leading-relaxed">
+              Chaque membre de notre équipe est rigoureusement sélectionné. Nous intervenons dans les délais convenus, avec discrétion et fiabilité absolues.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         CTA SECTION
+    ══════════════════════════════════════════ -->
+    <section class="py-32 px-8">
+      <div class="max-w-7xl mx-auto bg-inverse-surface rounded-[4rem] p-16 lg:p-24 overflow-hidden relative text-white">
+        <div class="relative z-10 max-w-2xl">
+          <h2 class="font-headline text-5xl lg:text-6xl font-black mb-8">Prenons soin de vos espaces</h2>
+          <p class="text-white/70 text-xl mb-12 leading-relaxed font-light">
+            MK Clean intervient en Marne et région Champagne-Ardenne avec une réactivité exemplaire. Sollicitez un devis gratuit adapté à vos besoins.
+          </p>
+          <div class="flex flex-wrap gap-8 items-center">
+            <a href="#contact" class="bg-teal-500 text-slate-900 px-12 py-6 rounded-full font-bold text-lg hover:bg-teal-400 transition-all shadow-xl">
+              Demander un devis
+            </a>
+            <div class="flex items-center gap-4 text-white/80">
+              <span class="material-symbols-outlined">call</span>
+              <span class="text-lg font-medium">06 71 42 22 32</span>
+            </div>
+          </div>
+        </div>
+        <!-- Texture overlay -->
+        <div class="absolute right-0 top-0 w-1/2 h-full opacity-10 pointer-events-none">
+          <img src="images/image5.jpg" alt="" class="w-full h-full object-cover" aria-hidden="true">
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         CONTACT
+    ══════════════════════════════════════════ -->
+    <section id="contact" class="py-24 px-8 max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-20">
+
+        <!-- Form -->
+        <div>
+          <h2 class="font-headline text-4xl font-bold mb-6">Parlons de votre projet</h2>
+          <p class="text-on-surface-variant mb-10 leading-relaxed">
+            Besoin d'un devis personnalisé ou d'une information spécifique ? Notre équipe vous répond sous 24h.
+          </p>
+
+          <form action="https://formspree.io/f/meoggpdo" method="POST" class="space-y-6">
+
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2 font-label" for="name">Nom Complet</label>
+                <input id="name" name="name" type="text" required placeholder="Jean Dupont"
+                  class="w-full bg-surface-container-low border-none focus:ring-2 focus:ring-primary rounded-xl px-4 py-3 text-on-surface font-body text-sm">
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2 font-label" for="email">Email</label>
+                <input id="email" name="email" type="email" required placeholder="jean@exemple.com"
+                  class="w-full bg-surface-container-low border-none focus:ring-2 focus:ring-primary rounded-xl px-4 py-3 text-on-surface font-body text-sm">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2 font-label" for="phone">Téléphone</label>
+              <input id="phone" name="phone" type="tel" placeholder="06 00 00 00 00"
+                class="w-full bg-surface-container-low border-none focus:ring-2 focus:ring-primary rounded-xl px-4 py-3 text-on-surface font-body text-sm">
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2 font-label" for="service">Service Souhaité</label>
+              <div class="relative">
+                <select id="service" name="service" required
+                  class="w-full bg-surface-container-low border-none focus:ring-2 focus:ring-primary rounded-xl px-4 py-3 text-on-surface appearance-none font-body text-sm pr-10">
+                  <option value="" disabled selected>Choisissez un service</option>
+                  <option value="commercial">Nettoyage Commercial</option>
+                  <option value="residentiel">Nettoyage Résidentiel</option>
+                  <option value="travaux">Nettoyage Après Travaux</option>
+                  <option value="vitres">Nettoyage de Vitres</option>
+                  <option value="autre">Autre</option>
+                </select>
+                <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none" style="font-size:1.1rem">expand_more</span>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2 font-label" for="message">Message</label>
+              <textarea id="message" name="message" required rows="4" placeholder="Comment pouvons-nous vous aider ?"
+                class="w-full bg-surface-container-low border-none focus:ring-2 focus:ring-primary rounded-xl px-4 py-3 text-on-surface font-body text-sm resize-none"></textarea>
+            </div>
+
+            <!-- Anti-spam -->
+            <div style="display:none"><input type="text" name="_gotcha"></div>
+            <input type="hidden" name="_subject" value="Nouveau message de contact - MK Clean">
+            <input type="hidden" name="_next" value="https://mkclean.fr/merci.html">
+
+            <button type="submit"
+              class="w-full bg-secondary-container text-on-secondary-container font-bold py-4 rounded-xl hover:shadow-lg transition-all active:scale-[0.98] font-body">
+              Envoyer le message
+            </button>
+
+          </form>
+        </div>
+
+        <!-- Info + Map -->
+        <div class="flex flex-col gap-12">
+
+          <!-- Dark info card -->
+          <div class="bg-inverse-surface p-10 rounded-3xl">
+            <h3 class="font-headline text-2xl mb-8 text-secondary-fixed-dim">Nos Coordonnées</h3>
+            <div class="space-y-6">
+              <div class="flex items-start gap-4">
+                <span class="material-symbols-outlined text-teal-400 flex-shrink-0">location_on</span>
+                <div>
+                  <p class="font-bold text-white text-sm">Zone d'intervention</p>
+                  <p class="text-white/60 text-sm mt-1">Marne et région Champagne-Ardenne</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <span class="material-symbols-outlined text-teal-400 flex-shrink-0">call</span>
+                <div>
+                  <p class="font-bold text-white text-sm">Téléphone</p>
+                  <p class="text-white/60 text-sm mt-1">06 71 42 22 32</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Map -->
+          <div class="flex-1 min-h-[300px] rounded-3xl overflow-hidden relative group">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10663.732292993758!2d4.3599999!3d48.9561111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e978c2d5e83c27%3A0x40a5fb99a3b4060!2sCh%C3%A2lons-en-Champagne%2C%20France!5e0!3m2!1sfr!2sfr!4v1714983610000!5m2!1sfr!2sfr"
+              width="100%" height="100%"
+              class="absolute inset-0 w-full h-full border-0"
+              style="min-height:300px; filter:grayscale(15%)"
+              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+            <div class="absolute inset-0 bg-primary/10 group-hover:bg-primary/5 transition-colors pointer-events-none"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white p-3 rounded-full shadow-lg">
+              <div class="w-4 h-4 bg-primary rounded-full animate-pulse"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         TRUST BAR BOTTOM
+    ══════════════════════════════════════════ -->
+    <section class="bg-inverse-surface py-12 px-8">
+      <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-8 font-medium">
+        <div class="flex items-center gap-3 text-white">
+          <span class="material-symbols-outlined text-teal-400">shield</span>
+          <span class="text-sm">Entreprise Assurée</span>
+        </div>
+        <div class="flex items-center gap-3 text-white">
+          <span class="material-symbols-outlined text-teal-400">energy_savings_leaf</span>
+          <span class="text-sm">Produits Éco-Certifiés</span>
+        </div>
+        <div class="flex items-center gap-3 text-white">
+          <span class="material-symbols-outlined text-teal-400">groups</span>
+          <span class="text-sm">Équipes Formées</span>
+        </div>
+        <div class="flex items-center gap-3 text-white">
+          <span class="material-symbols-outlined text-teal-400">star</span>
+          <span class="text-sm">Satisfaction 100%</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════ -->
+  <footer class="bg-slate-900 py-12 px-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+
+      <div class="col-span-1">
+        <div class="font-headline text-xl text-white mb-4">MK Clean</div>
+        <p class="text-slate-400 text-sm font-body mb-2">Services de Nettoyage Professionnels</p>
+        <p class="text-slate-500 text-sm font-body">Marne &amp; Champagne-Ardenne</p>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <h4 class="font-body text-sm uppercase tracking-widest text-teal-400">Services</h4>
+        <a class="text-slate-400 hover:text-white transition-colors text-sm font-body uppercase tracking-widest" href="#services">Nettoyage Commercial</a>
+        <a class="text-slate-400 hover:text-white transition-colors text-sm font-body uppercase tracking-widest" href="#services">Nettoyage Résidentiel</a>
+        <a class="text-slate-400 hover:text-white transition-colors text-sm font-body uppercase tracking-widest" href="#services">Après Travaux</a>
+        <a class="text-slate-400 hover:text-white transition-colors text-sm font-body uppercase tracking-widest" href="#services">Nettoyage de Vitres</a>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <h4 class="font-body text-sm uppercase tracking-widest text-teal-400">Navigation</h4>
+        <a class="text-slate-400 hover:text-white transition-colors text-sm font-body uppercase tracking-widest" href="#accueil">Accueil</a>
+        <a class="text-slate-400 hover:text-white transition-colors text-sm font-body uppercase tracking-widest" href="#realisation">Réalisations</a>
+        <a class="text-slate-400 hover:text-white transition-colors text-sm font-body uppercase tracking-widest" href="#apropos">À Propos</a>
+        <a class="text-slate-400 hover:text-white transition-colors text-sm font-body uppercase tracking-widest" href="#contact">Contact</a>
+      </div>
+
+    </div>
+    <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-slate-800 text-center">
+      <p class="text-slate-500 font-body text-sm uppercase tracking-widest">&copy; 2025 MK Clean. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
