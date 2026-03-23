@@ -45,7 +45,7 @@
   overflow: hidden;
   border-radius: 1.5rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.06), 0 20px 48px rgba(0,0,0,0.14);
-  height: 480px;
+  aspect-ratio: 4 / 3;
 }
 
 .carousel-inner {
@@ -141,7 +141,7 @@
 ───────────────────────────────────────── */
 @media (max-width: 640px) {
   .carousel {
-    height: 320px;
+    aspect-ratio: 4 / 3;
     border-radius: 1rem;
   }
   .carousel-caption {
