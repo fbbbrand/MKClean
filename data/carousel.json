@@ -1,0 +1,11 @@
+{
+  "slides": [
+    { "src": "images/image1.jpg",  "title": "Gymnase",                   "caption": "Nettoyage des sols sportifs" },
+    { "src": "images/image3.jpg",  "title": "Appartement",               "caption": "Ménage complet d'un logement vide" },
+    { "src": "images/image4.jpg",  "title": "Cuisine et séjour",         "caption": "Remise en état après travaux" },
+    { "src": "images/image5.jpg",  "title": "Couloir de bureaux",        "caption": "Entretien régulier de locaux professionnels" },
+    { "src": "images/image6.jpg",  "title": "Plateau de bureaux",        "caption": "Traitement et nettoyage des sols" },
+    { "src": "images/tonte1.jpg",  "title": "Abords d'un bâtiment",      "caption": "Tonte et entretien des espaces verts" },
+    { "src": "images/tonte2.jpg",  "title": "Terrain enherbé",           "caption": "Remise en état d'un espace vert" }
+  ]
+}

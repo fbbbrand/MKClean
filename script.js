@@ -1,111 +1,129 @@
-document.addEventListener('DOMContentLoaded', function () {
+(function () {
+  'use strict';
 
-  // ──────────────────────────────────────────
-  // Mobile menu — full screen overlay
-  // ──────────────────────────────────────────
-  var mobileMenu  = document.getElementById('mobile-menu');
-  var openBtn     = document.getElementById('menu-open-btn');
-  var closeBtn    = document.getElementById('menu-close-btn');
-  var mobileLinks = document.querySelectorAll('.mobile-link');
-
-  function openMenu() {
-    mobileMenu.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeMenu() {
-    mobileMenu.classList.remove('is-open');
-    document.body.style.overflow = '';
-  }
-
-  if (openBtn)  openBtn.addEventListener('click', openMenu);
-  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
-
-  mobileLinks.forEach(function (link) {
-    link.addEventListener('click', closeMenu);
-  });
-
-  // ──────────────────────────────────────────
-  // Smooth scroll
-  // ──────────────────────────────────────────
-  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
-    anchor.addEventListener('click', function (e) {
-      var id = this.getAttribute('href');
-      if (id === '#') return;
-      var target = document.querySelector(id);
-      if (!target) return;
-      e.preventDefault();
-      var offset = 72; // header height
-      var top = target.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top: top, behavior: 'smooth' });
+  // ── Menu mobile ─────────────────────────────
+  var nav = document.getElementById('nav');
+  var menuBtn = document.getElementById('menu-btn');
+  if (nav && menuBtn) {
+    menuBtn.addEventListener('click', function () {
+      var open = nav.classList.toggle('is-open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
-  });
-
-  // Active nav link highlight on scroll
-  var sections = document.querySelectorAll('section[id]');
-  var navLinks = document.querySelectorAll('#desktop-nav .nav-item');
-
-  function setActive(id) {
-    navLinks.forEach(function (link) {
-      link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+    nav.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        nav.classList.remove('is-open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      }
     });
   }
 
-  function onScroll() {
-    var scrollY = window.scrollY + 100;
-    var current = sections[0].id;
-    sections.forEach(function (section) {
-      if (scrollY >= section.offsetTop) current = section.id;
-    });
-    setActive(current);
+  var year = document.getElementById('year');
+  if (year) year.textContent = new Date().getFullYear();
+
+  // ── Carrousel ───────────────────────────────
+  // Les photos sont lues depuis data/carousel.json, modifié via la page admin.
+  var root = document.getElementById('carousel');
+  if (!root) return;
+
+  var ICON_PREV = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>';
+  var ICON_NEXT = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>';
+
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
   }
 
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  function showMessage(msg) {
+    root.innerHTML = '';
+    root.appendChild(el('div', 'carousel-empty', msg));
+  }
 
-  // ──────────────────────────────────────────
-  // Carousel
-  // ──────────────────────────────────────────
-  function initCarousel() {
-    var inner      = document.querySelector('.carousel-inner');
-    var items      = document.querySelectorAll('.carousel-item');
-    var prevBtn    = document.querySelector('.carousel-prev');
-    var nextBtn    = document.querySelector('.carousel-next');
-    var indicators = document.querySelectorAll('.carousel-indicator');
+  function build(slides) {
+    if (!slides.length) { showMessage('Aucune photo pour le moment.'); return; }
 
-    if (!inner || !prevBtn) return;
+    root.innerHTML = '';
+    var frame = el('div', 'carousel');
+    var viewport = el('div', 'carousel-viewport');
+    var track = el('div', 'carousel-track');
+
+    slides.forEach(function (s, i) {
+      var fig = el('figure', 'carousel-slide');
+      fig.setAttribute('role', 'group');
+      fig.setAttribute('aria-label', (i + 1) + ' sur ' + slides.length);
+      var img = el('img');
+      img.src = s.src;
+      img.alt = s.alt || s.title || '';
+      if (i > 0) img.loading = 'lazy';
+      fig.appendChild(img);
+      track.appendChild(fig);
+    });
+
+    viewport.appendChild(track);
+    frame.appendChild(viewport);
+
+    var bar = el('div', 'carousel-bar');
+    var text = el('div', 'carousel-text');
+    var title = el('div', 'carousel-title');
+    var caption = el('div', 'carousel-caption');
+    text.appendChild(title);
+    text.appendChild(caption);
+    text.setAttribute('aria-live', 'polite');
+
+    var navBox = el('div', 'carousel-nav');
+    var count = el('span', 'carousel-count');
+    var prev = el('button', 'carousel-btn'); prev.type = 'button'; prev.innerHTML = ICON_PREV; prev.setAttribute('aria-label', 'Photo précédente');
+    var next = el('button', 'carousel-btn'); next.type = 'button'; next.innerHTML = ICON_NEXT; next.setAttribute('aria-label', 'Photo suivante');
+    navBox.appendChild(count);
+    navBox.appendChild(prev);
+    navBox.appendChild(next);
+
+    bar.appendChild(text);
+    bar.appendChild(navBox);
+    root.appendChild(frame);
+    root.appendChild(bar);
 
     var current = 0;
-    var total   = items.length;
+    var total = slides.length;
 
     function goTo(i) {
-      if (i < 0)      i = total - 1;
-      if (i >= total) i = 0;
-      inner.style.transform = 'translateX(-' + (i * 100) + '%)';
-      current = i;
-      indicators.forEach(function (dot, idx) {
-        dot.classList.toggle('active', idx === i);
-      });
+      current = (i + total) % total;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      title.textContent = slides[current].title || '';
+      caption.textContent = slides[current].caption || '';
+      count.textContent = (current + 1) + ' / ' + total;
     }
 
-    prevBtn.addEventListener('click', function () { goTo(current - 1); });
-    nextBtn.addEventListener('click', function () { goTo(current + 1); });
+    prev.addEventListener('click', function () { goTo(current - 1); restart(); });
+    next.addEventListener('click', function () { goTo(current + 1); restart(); });
 
-    indicators.forEach(function (dot, idx) {
-      dot.addEventListener('click', function () { goTo(idx); });
+    // Glisser au doigt sur mobile
+    var startX = null;
+    viewport.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+    viewport.addEventListener('touchend', function (e) {
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) { goTo(current + (dx < 0 ? 1 : -1)); restart(); }
+      startX = null;
     });
 
-    var timer = setInterval(function () { goTo(current + 1); }, 5000);
-
-    var carousel = document.querySelector('.carousel');
-    carousel.addEventListener('mouseenter', function () { clearInterval(timer); });
-    carousel.addEventListener('mouseleave', function () {
-      timer = setInterval(function () { goTo(current + 1); }, 5000);
-    });
+    // Défilement auto, coupé si l'utilisateur préfère moins d'animations
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var timer = null;
+    function start() { if (!reduce && total > 1) timer = setInterval(function () { goTo(current + 1); }, 6000); }
+    function stop() { clearInterval(timer); timer = null; }
+    function restart() { stop(); start(); }
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', start);
+    root.addEventListener('focusin', stop);
 
     goTo(0);
+    start();
   }
 
-  initCarousel();
-
-});
+  fetch('data/carousel.json', { cache: 'no-cache' })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (data) { build(Array.isArray(data.slides) ? data.slides : []); })
+    .catch(function () { showMessage('Les photos n\'ont pas pu être chargées.'); });
+})();

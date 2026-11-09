@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Administration — MK Clean</title>
+  <link rel="icon" type="image/png" href="images/logo-mkclean-sm.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin">
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">
+        <img src="images/logo-mkclean-sm.png" alt="" width="38" height="43">
+        MK Clean <span class="admin-tag">admin</span>
+      </a>
+      <button type="button" class="btn btn-ghost admin-logout" id="logout" hidden>Se déconnecter</button>
+    </div>
+  </header>
+
+  <main class="wrap admin-main">
+
+    <!-- Connexion -->
+    <section id="view-login" class="admin-card admin-narrow" hidden>
+      <h1>Connexion</h1>
+      <form id="login-form" class="form">
+        <div class="field">
+          <label for="login-password">Mot de passe</label>
+          <input id="login-password" type="password" required autocomplete="current-password" autofocus>
+        </div>
+        <p class="admin-error" id="login-error" hidden></p>
+        <button class="btn btn-primary" type="submit">Se connecter</button>
+      </form>
+      <p class="admin-small">
+        Premier passage sur cet appareil, ou mot de passe oublié ?
+        <button type="button" class="linkish" id="reset-device">Reconfigurer cet appareil</button>
+      </p>
+    </section>
+
+    <!-- Première configuration -->
+    <section id="view-setup" class="admin-card admin-narrow" hidden>
+      <h1>Configurer l'accès admin</h1>
+      <p class="admin-small">
+        À faire une seule fois par appareil (ordinateur, téléphone). Il faut un jeton d'accès GitHub
+        qui autorise la modification de ce site : voir <a href="https://github.com/fbbbrand/MKClean/blob/main/ADMIN.md" target="_blank" rel="noopener">le guide</a>.
+        Le jeton est enregistré chiffré dans ce navigateur et déverrouillé par votre mot de passe.
+      </p>
+      <form id="setup-form" class="form">
+        <div class="field">
+          <label for="setup-token">Jeton GitHub</label>
+          <input id="setup-token" type="password" required autocomplete="off" spellcheck="false" placeholder="github_pat_…">
+        </div>
+        <div class="field">
+          <label for="setup-branch">Branche publiée <span class="opt">(laisser « main » sauf pour des tests)</span></label>
+          <input id="setup-branch" type="text" required value="main" spellcheck="false">
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="setup-password">Choisir un mot de passe</label>
+            <input id="setup-password" type="password" required minlength="8" autocomplete="new-password">
+          </div>
+          <div class="field">
+            <label for="setup-password2">Le confirmer</label>
+            <input id="setup-password2" type="password" required minlength="8" autocomplete="new-password">
+          </div>
+        </div>
+        <p class="admin-error" id="setup-error" hidden></p>
+        <button class="btn btn-primary" type="submit">Enregistrer et se connecter</button>
+      </form>
+    </section>
+
+    <!-- Gestion du carrousel -->
+    <section id="view-editor" hidden>
+      <div class="admin-toolbar">
+        <div>
+          <h1>Photos du carrousel</h1>
+          <p class="admin-small" id="editor-info"></p>
+        </div>
+        <div class="admin-toolbar-actions">
+          <label class="btn btn-ghost" for="file-input">Ajouter des photos</label>
+          <input id="file-input" type="file" accept="image/*" multiple hidden>
+          <button class="btn btn-primary" id="publish" type="button" disabled>Publier</button>
+        </div>
+      </div>
+
+      <p class="admin-status" id="status" hidden></p>
+
+      <div class="admin-drop" id="drop">Glissez des photos ici, ou utilisez « Ajouter des photos ».</div>
+
+      <ol class="admin-list" id="slides"></ol>
+    </section>
+
+  </main>
+
+  <template id="slide-tpl">
+    <li class="admin-slide">
+      <img class="admin-thumb" alt="">
+      <div class="admin-slide-fields">
+        <div class="field">
+          <label>Titre</label>
+          <input type="text" class="f-title" maxlength="80">
+        </div>
+        <div class="field">
+          <label>Légende <span class="opt">(facultatif)</span></label>
+          <input type="text" class="f-caption" maxlength="140">
+        </div>
+        <span class="admin-badge" hidden>Nouvelle</span>
+      </div>
+      <div class="admin-slide-actions">
+        <button type="button" class="carousel-btn a-up"   aria-label="Monter">↑</button>
+        <button type="button" class="carousel-btn a-down" aria-label="Descendre">↓</button>
+        <button type="button" class="carousel-btn a-del"  aria-label="Retirer">✕</button>
+      </div>
+    </li>
+  </template>
+
+  <script src="admin.js"></script>
+</body>
+</html>
